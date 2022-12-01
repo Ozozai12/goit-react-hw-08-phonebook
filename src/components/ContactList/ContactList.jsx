@@ -7,7 +7,7 @@ export const ContactList = ({ filterContacts, onDeleteContact }) => {
       {filterContacts?.map(contact => {
         return (
           <li key={contact.id}>
-            {contact.name}: {contact.phone}
+            {contact.name}: {contact.number}
             <button
               type="button"
               onClick={() => onDeleteContact(contact.id)}
