@@ -21,10 +21,10 @@ export function Contacts() {
     dispatch(fetchContacts());
   }, [dispatch]);
 
-  const handleSubmit = (name, phone) => {
+  const handleSubmit = (name, number) => {
     const contact = {
       name,
-      phone,
+      number,
     };
     if (
       contacts?.find(
