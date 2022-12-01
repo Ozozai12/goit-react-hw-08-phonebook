@@ -29,7 +29,6 @@ export const addContact = createAsyncThunk(
   'contacts/addContact',
   async contact => {
     try {
-      // const { name, number } = contact;
       const response = await axios.post('/contacts', contact);
       console.log(response.data);
       return response.data;
@@ -82,3 +81,22 @@ export const logoutUser = createAsyncThunk('auth/logout', async () => {
     // return thunkAPI.rejectWithValue(error.message);
   }
 });
+
+export const refreshUser = createAsyncThunk(
+  'auth/refresh',
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.authorization.token;
+
+    if (persistedToken === null) {
+      return;
+    }
+
+    token.set(persistedToken);
+    try {
+      const response = await axios.get('/users/current');
+      console.log(response.data);
+      return response.data;
+    } catch (error) {}
+  }
+);
