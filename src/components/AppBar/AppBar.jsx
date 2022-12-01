@@ -5,7 +5,8 @@ import { UserMenu } from 'components/UserMenu/UserMenu';
 import { useSelector } from 'react-redux';
 
 export const AppBar = () => {
-  const isLoggedIn = useSelector(state => state.isLoggedIn);
+  const isLoggedIn = useSelector(state => state.authorization.isLoggedIn);
+
   return (
     <>
       <nav className={css.header}>
@@ -16,7 +17,7 @@ export const AppBar = () => {
           Contacts
         </StyledLink>
       </nav>
-      {!isLoggedIn ? (
+      {isLoggedIn ? (
         <UserMenu />
       ) : (
         <div>

@@ -1,12 +1,13 @@
 import { useSelector } from 'react-redux';
 
 export function UserMenu() {
-  const name = useSelector(state => state.user);
-  console.log(name);
+  const name = useSelector(state => state.authorization.user.name);
 
   return (
     <div>
-      <p>{name}</p>
+      <span>
+        <i>{name} </i>
+      </span>
       <button>Logout</button>
     </div>
   );
