@@ -7,6 +7,7 @@ import { Login } from 'pages/Login';
 import { Register } from 'pages/Register';
 import { AppBar } from './AppBar/AppBar';
 import { refreshUser } from 'redux/operations';
+import PrivateRoute from './PrivatRoute';
 
 export function App() {
   const dispatch = useDispatch();
@@ -18,7 +19,9 @@ export function App() {
     <Routes>
       <Route path="/" element={<AppBar />}>
         <Route index element={<Home />} />
-        <Route path="/contacts" element={<Contacts />} />
+        <PrivateRoute path="/contacts">
+          <Contacts />
+        </PrivateRoute>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
       </Route>
