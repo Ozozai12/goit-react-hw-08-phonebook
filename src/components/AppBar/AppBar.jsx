@@ -9,27 +9,28 @@ export const AppBar = () => {
 
   return (
     <>
-      <nav className={css.header}>
-        <StyledLink to="/" className={css.navigation}>
-          Home
-        </StyledLink>
-        <StyledLink to="contacts" className={css.navigation}>
-          Contacts
-        </StyledLink>
-      </nav>
-      {isLoggedIn ? (
-        <UserMenu />
-      ) : (
-        <div>
-          <StyledLink to="register" className={css.navigation}>
-            Register
+      <div className={css.header}>
+        <nav className={css.nav}>
+          <StyledLink to="/" className={css.navItem}>
+            Home
           </StyledLink>
-          <StyledLink to="login" className={css.navigation}>
-            Login
+          <StyledLink to="contacts" className={css.navItem}>
+            Contacts
           </StyledLink>
-        </div>
-      )}
-
+        </nav>
+        {isLoggedIn ? (
+          <UserMenu />
+        ) : (
+          <div className={css.nav}>
+            <StyledLink to="register" className={css.navItem}>
+              Register
+            </StyledLink>
+            <StyledLink to="login" className={css.navItem}>
+              Login
+            </StyledLink>
+          </div>
+        )}
+      </div>
       <Outlet />
     </>
   );

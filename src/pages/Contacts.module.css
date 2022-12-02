@@ -1,0 +1,13 @@
+.section {
+  text-align: center;
+}
+
+.input {
+  display: block;
+}
+
+.addButton {
+  margin-top: 20px;
+  width: 75px;
+  height: 25px;
+}

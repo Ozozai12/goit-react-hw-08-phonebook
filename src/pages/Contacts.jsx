@@ -1,8 +1,8 @@
 import { ContactForm } from 'components/ContactForm/ContactForm';
 import Filter from 'components/Filter/Filter';
 import { ContactList } from 'components/ContactList/ContactList';
-import css from 'components/App.module.css';
-// import PropTypes from 'prop-types';
+import css from 'pages/Contacts.module.css';
+import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { filterChange } from 'redux/filterSlice';
 import { useEffect } from 'react';
@@ -69,11 +69,11 @@ export function Contacts() {
   );
 }
 
-// Contacts.propTypes = {
-//   contacts: PropTypes.arrayOf(
-//     PropTypes.exact({
-//       name: PropTypes.string,
-//       phone: PropTypes.number,
-//     })
-//   ),
-// };
+Contacts.propTypes = {
+  contacts: PropTypes.arrayOf(
+    PropTypes.exact({
+      name: PropTypes.string,
+      phone: PropTypes.number,
+    })
+  ),
+};

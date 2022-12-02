@@ -1,0 +1,15 @@
+.user {
+  display: flex;
+  align-items: center;
+}
+
+.userName {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.userButton {
+  height: 30px;
+}

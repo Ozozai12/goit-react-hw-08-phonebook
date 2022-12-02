@@ -1,3 +1,41 @@
+.contactsContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.contactList {
+  display: flex;
+
+  gap: 20px;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.contactItem {
+  display: flex;
+  justify-content: space-between;
+  width: 230px;
+  height: 50px;
+  outline: gray 2px solid;
+  border-radius: 4px;
+}
+
+.nameThumb {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 190px;
+}
+
+.buttonThumb {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
 .deleteButton {
-  margin-left: 25px;
+  height: 30px;
 }

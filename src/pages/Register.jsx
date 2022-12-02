@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { registerUser } from 'redux/operations';
-import css from '../components/ContactForm/ContactForm.module.css';
+import css from './Contacts.module.css';
 
 export function Register() {
   const dispatch = useDispatch();
@@ -31,10 +31,10 @@ export function Register() {
     setPassword('');
   };
   return (
-    <>
+    <div className={css.section}>
       <h2>Register before using phonebook!</h2>
       <form onSubmit={handleSubmit} className={css.contactForm}>
-        <label>
+        <label className={css.input}>
           Enter your login <br />
           <input
             type="text"
@@ -45,7 +45,7 @@ export function Register() {
           />
         </label>
         <br />
-        <label>
+        <label className={css.input}>
           Enter your email <br />
           <input
             type="email"
@@ -56,7 +56,7 @@ export function Register() {
           />
         </label>
         <br />
-        <label>
+        <label className={css.input}>
           Enter your password <br />
           <input
             type="password"
@@ -71,6 +71,6 @@ export function Register() {
           Register
         </button>
       </form>
-    </>
+    </div>
   );
 }
