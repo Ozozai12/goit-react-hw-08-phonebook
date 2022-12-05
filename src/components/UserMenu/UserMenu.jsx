@@ -4,12 +4,12 @@ import css from './UserMenu.module.css';
 
 export function UserMenu() {
   const dispatch = useDispatch();
-  const name = useSelector(state => state.authorization.user.name);
+  const email = useSelector(state => state.authorization.user.email);
 
   return (
     <div className={css.user}>
       <span className={css.userName}>
-        <i>{name} </i>
+        <i>{email} </i>
       </span>
       <button
         type="button"
