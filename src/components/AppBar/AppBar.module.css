@@ -1,6 +1,7 @@
 .header {
   display: flex;
   justify-content: space-between;
+  border-bottom: grey 2px solid;
 }
 
 .nav {

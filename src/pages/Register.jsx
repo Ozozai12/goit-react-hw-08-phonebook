@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { registerUser } from 'redux/operations';
+import { Link } from 'react-router-dom';
 import css from './Contacts.module.css';
 
 export function Register() {
@@ -33,6 +34,9 @@ export function Register() {
   return (
     <div className={css.section}>
       <h2>Register before using phonebook!</h2>
+      <p>
+        Already have an account? <Link to="/register">Login</Link> then
+      </p>
       <form onSubmit={handleSubmit} className={css.contactForm}>
         <label className={css.input}>
           Enter your login <br />
