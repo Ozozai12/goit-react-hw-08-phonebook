@@ -57,14 +57,19 @@ export function Contacts() {
       <h1>Phonebook</h1>
       <ContactForm onSubmit={handleSubmit} />
       <h2>Contacts</h2>
+
       {contacts.length > 0 && (
         <Filter query={filter} onChange={handleFilterChange} />
       )}
       {isLoading && !error && <h3>Loading contacts...</h3>}
-      <ContactList
-        filterContacts={filterContacts}
-        onDeleteContact={handleDelete}
-      />
+      {contacts.length === 0 ? (
+        <p>No contacts yet.</p>
+      ) : (
+        <ContactList
+          filterContacts={filterContacts}
+          onDeleteContact={handleDelete}
+        />
+      )}
     </div>
   );
 }
