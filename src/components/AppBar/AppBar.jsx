@@ -14,9 +14,11 @@ export const AppBar = () => {
           <StyledLink to="/" className={css.navItem}>
             Home
           </StyledLink>
-          <StyledLink to="contacts" className={css.navItem}>
-            Contacts
-          </StyledLink>
+          {isLoggedIn && (
+            <StyledLink to="contacts" className={css.navItem}>
+              Contacts
+            </StyledLink>
+          )}
         </nav>
         {isLoggedIn ? (
           <UserMenu />
