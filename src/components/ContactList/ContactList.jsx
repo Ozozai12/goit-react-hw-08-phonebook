@@ -1,5 +1,6 @@
 import React from 'react';
 import css from 'components/ContactList/ContactList.module.css';
+import { BsFillTrashFill } from 'react-icons/bs';
 
 export const ContactList = ({ filterContacts, onDeleteContact }) => {
   return (
@@ -7,7 +8,7 @@ export const ContactList = ({ filterContacts, onDeleteContact }) => {
       <ul className={css.contactList}>
         {filterContacts?.map(contact => {
           return (
-            <li key={contact.id} className={css.contactItem}>
+            <li key={contact._id} className={css.contactItem}>
               <div className={css.nameThumb}>
                 <span className={css.name}>{contact.name}:</span>{' '}
                 <span>{contact.number}</span>
@@ -16,11 +17,11 @@ export const ContactList = ({ filterContacts, onDeleteContact }) => {
               <div className={css.buttonThumb}>
                 <button
                   type="button"
-                  onClick={() => onDeleteContact(contact.id)}
+                  onClick={() => onDeleteContact(contact._id)}
                   className={css.deleteButton}
                 >
                   {' '}
-                  Delete
+                  <BsFillTrashFill />
                 </button>
               </div>
             </li>

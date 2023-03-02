@@ -12,4 +12,10 @@
 
 .userButton {
   height: 30px;
+  width: 30px;
+  background-color: #8693ff;
+  color: #fff;
+  border-radius: 10px;
+  border: 1px solid grey;
+  cursor: pointer;
 }

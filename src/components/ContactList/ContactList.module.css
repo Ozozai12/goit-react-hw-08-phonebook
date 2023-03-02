@@ -18,7 +18,7 @@
   justify-content: space-between;
   width: 230px;
   height: 50px;
-  outline: gray 2px solid;
+  outline: #8693ff 2px solid;
   border-radius: 4px;
 }
 
@@ -37,5 +37,15 @@
 }
 
 .deleteButton {
-  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 40px;
+  background-color: #8693ff;
+  font-size: 12px;
+  color: #fff;
+  border-radius: 50%;
+  border: 1px solid grey;
+  cursor: pointer;
 }

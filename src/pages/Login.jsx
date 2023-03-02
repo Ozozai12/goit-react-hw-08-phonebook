@@ -31,7 +31,7 @@ export function Login() {
         Don't have account yet? <Link to="/register">Register</Link> then
       </p>
       <form onSubmit={handleSubmit} className={css.contactForm}>
-        <label className={css.input}>
+        <label className={css.formField}>
           Enter your email <br />
           <input
             type="email"
@@ -39,10 +39,11 @@ export function Login() {
             required
             value={email}
             onChange={handleEmailChange}
+            className={css.input}
           />
         </label>
         <br />
-        <label className={css.input}>
+        <label className={css.formField}>
           Enter your password <br />
           <input
             type="password"
@@ -50,10 +51,11 @@ export function Login() {
             required
             value={password}
             onChange={handlePasswordChange}
+            className={css.input}
           />
         </label>
         <br />
-        <button type="submit" className={css.addButton}>
+        <button type="submit" className={css.signButton}>
           Login
         </button>
       </form>

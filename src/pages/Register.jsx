@@ -35,21 +35,22 @@ export function Register() {
     <div className={css.section}>
       <h2>Register before using phonebook!</h2>
       <p>
-        Already have an account? <Link to="/register">Login</Link> then
+        Already have an account? <Link to="/login">Login</Link> then
       </p>
       <form onSubmit={handleSubmit} className={css.contactForm}>
-        <label className={css.input}>
-          Enter your login <br />
+        <label className={css.formField}>
+          Enter your name <br />
           <input
             type="text"
             name="name"
             required
             value={name}
             onChange={handleNameChange}
+            className={css.input}
           />
         </label>
         <br />
-        <label className={css.input}>
+        <label className={css.formField}>
           Enter your email <br />
           <input
             type="email"
@@ -57,10 +58,11 @@ export function Register() {
             required
             value={email}
             onChange={handleEmailChange}
+            className={css.input}
           />
         </label>
         <br />
-        <label className={css.input}>
+        <label className={css.formField}>
           Enter your password <br />
           <input
             type="password"
@@ -68,10 +70,11 @@ export function Register() {
             required
             value={password}
             onChange={handlePasswordChange}
+            className={css.input}
           />
         </label>
         <br />
-        <button type="submit" className={css.addButton}>
+        <button type="submit" className={css.signButton}>
           Register
         </button>
       </form>

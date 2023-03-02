@@ -24,6 +24,7 @@ export function ContactForm({ onSubmit }) {
 
   return (
     <form onSubmit={handleSubmit} className={css.contactForm}>
+      <p>Enter name and phone number:</p>
       <label>
         Name <br />
         <input
@@ -34,6 +35,7 @@ export function ContactForm({ onSubmit }) {
           required
           value={name}
           onChange={handleNameChange}
+          className={css.input}
         />
       </label>
       <br />
@@ -47,6 +49,7 @@ export function ContactForm({ onSubmit }) {
           required
           value={number}
           onChange={handleNumberChange}
+          className={css.input}
         />
       </label>
       <br />

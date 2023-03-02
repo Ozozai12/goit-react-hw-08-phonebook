@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
+axios.defaults.baseURL = 'https://pet-phonebook-backend.onrender.com/api';
 
 const token = {
   set(token) {
@@ -29,8 +29,7 @@ export const addContact = createAsyncThunk(
   'contacts/addContact',
   async (contact, thunkAPI) => {
     try {
-      const response = await axios.post('/contacts', contact);
-      console.log(response.data);
+      const response = await axios.post('/contacts/add', contact);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -54,8 +53,8 @@ export const registerUser = createAsyncThunk(
   'auth/register',
   async (credentials, thunkAPI) => {
     try {
-      const response = await axios.post('/users/signup', credentials);
-      token.set(response.data.token);
+      const response = await axios.post('/users/register', credentials);
+
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
