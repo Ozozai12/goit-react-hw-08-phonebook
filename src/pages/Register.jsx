@@ -4,6 +4,8 @@ import { registerUser, loginUser } from 'redux/operations';
 import { Link } from 'react-router-dom';
 import css from './Contacts.module.css';
 import { Oval } from 'react-loader-spinner';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export function Register() {
   const dispatch = useDispatch();
@@ -30,17 +32,25 @@ export function Register() {
     event.preventDefault();
     const newUser = { name, email, password };
 
-    try {
-      const data = await dispatch(registerUser(newUser));
-      if (data.type === 'auth/register/fulfilled') {
-        await dispatch(
-          loginUser({ email: newUser.email, password: newUser.password })
-        );
-      }
-    } catch (error) {
-      console.log('Error: ', error.message);
+    const data = await dispatch(registerUser(newUser));
+    if (data.type === 'auth/register/fulfilled') {
+      await dispatch(
+        loginUser({ email: newUser.email, password: newUser.password })
+      );
     }
+
+    toast.error('User with this email already exists!', {
+      position: 'top-center',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'light',
+    });
   };
+
   return (
     <div className={css.section}>
       <h2>Register before using phonebook!</h2>
@@ -102,6 +112,7 @@ export function Register() {
           Register
         </button>
       </form>
+      <ToastContainer />
     </div>
   );
 }

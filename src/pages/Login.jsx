@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { loginUser } from 'redux/operations';
 import css from './Contacts.module.css';
 import { Oval } from 'react-loader-spinner';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export function Login() {
   const dispatch = useDispatch();
@@ -20,12 +22,23 @@ export function Login() {
     setPassword(event.target.value);
   };
 
-  const handleSubmit = event => {
+  const handleSubmit = async event => {
     event.preventDefault();
-    dispatch(loginUser({ email, password }));
 
-    setEmail('');
-    setPassword('');
+    const data = await dispatch(loginUser({ email, password }));
+
+    if (data.type === 'auth/login/rejected') {
+      toast.error('There is no user with this email', {
+        position: 'top-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+      });
+    }
   };
   return (
     <div className={css.section}>
@@ -76,6 +89,7 @@ export function Login() {
           Login
         </button>
       </form>
+      <ToastContainer />
     </div>
   );
 }
