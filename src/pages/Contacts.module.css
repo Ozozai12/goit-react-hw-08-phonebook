@@ -24,12 +24,14 @@
 }
 
 .signButton {
+  width: 165px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 25px;
   background-color: #8693ff;
-  padding: 7px 50px 7px 50px;
+
   color: #fff;
   border-radius: 20px;
   border: 1px solid grey;

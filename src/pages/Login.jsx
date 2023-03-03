@@ -1,13 +1,16 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { loginUser } from 'redux/operations';
 import css from './Contacts.module.css';
+import { Oval } from 'react-loader-spinner';
 
 export function Login() {
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const isLoading = useSelector(state => state.authorization.isLoading);
 
   const handleEmailChange = event => {
     setEmail(event.target.value);
@@ -56,6 +59,20 @@ export function Login() {
         </label>
         <br />
         <button type="submit" className={css.signButton}>
+          {isLoading && (
+            <Oval
+              height={20}
+              width={20}
+              color="#fff"
+              wrapperStyle={{}}
+              wrapperClass=""
+              visible={true}
+              ariaLabel="oval-loading"
+              secondaryColor="#bebebe"
+              strokeWidth={2}
+              strokeWidthSecondary={2}
+            />
+          )}
           Login
         </button>
       </form>

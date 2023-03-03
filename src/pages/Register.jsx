@@ -1,11 +1,14 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { registerUser } from 'redux/operations';
+import { useDispatch, useSelector } from 'react-redux';
+import { registerUser, loginUser } from 'redux/operations';
 import { Link } from 'react-router-dom';
 import css from './Contacts.module.css';
+import { Oval } from 'react-loader-spinner';
 
 export function Register() {
   const dispatch = useDispatch();
+
+  const isLoading = useSelector(state => state.authorization.isLoading);
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -23,13 +26,20 @@ export function Register() {
     setPassword(event.target.value);
   };
 
-  const handleSubmit = event => {
+  const handleSubmit = async event => {
     event.preventDefault();
-    dispatch(registerUser({ name, email, password }));
+    const newUser = { name, email, password };
 
-    setName('');
-    setEmail('');
-    setPassword('');
+    try {
+      const data = await dispatch(registerUser(newUser));
+      if (data.type === 'auth/register/fulfilled') {
+        await dispatch(
+          loginUser({ email: newUser.email, password: newUser.password })
+        );
+      }
+    } catch (error) {
+      console.log('Error: ', error.message);
+    }
   };
   return (
     <div className={css.section}>
@@ -75,6 +85,20 @@ export function Register() {
         </label>
         <br />
         <button type="submit" className={css.signButton}>
+          {isLoading && (
+            <Oval
+              height={20}
+              width={20}
+              color="#fff"
+              wrapperStyle={{}}
+              wrapperClass=""
+              visible={true}
+              ariaLabel="oval-loading"
+              secondaryColor="#bebebe"
+              strokeWidth={2}
+              strokeWidthSecondary={2}
+            />
+          )}
           Register
         </button>
       </form>
