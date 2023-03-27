@@ -15,6 +15,7 @@ export function Register() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isVisible, setIsVisible] = useState(false);
 
   const handleNameChange = event => {
     setName(event.target.value);
@@ -31,6 +32,10 @@ export function Register() {
   const handleSubmit = async event => {
     event.preventDefault();
     const newUser = { name, email, password };
+
+    setTimeout(() => {
+      setIsVisible(true);
+    }, 3000);
 
     const data = await dispatch(registerUser(newUser));
     if (data.type === 'auth/register/fulfilled') {
@@ -112,6 +117,11 @@ export function Register() {
           Register
         </button>
       </form>
+      {isVisible && (
+        <p className={css.sorryMessage}>
+          It may take some time for the first time, please wait...
+        </p>
+      )}
       <ToastContainer />
     </div>
   );

@@ -37,3 +37,8 @@
   border: 1px solid grey;
   cursor: pointer;
 }
+
+.sorryMessage {
+  text-align: center;
+  margin-top: 40px;
+}
